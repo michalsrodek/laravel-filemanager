@@ -32,7 +32,7 @@
     $("#notify").modal('hide');
     var items =[];
     $("#items").find("input").each(function() {items.push(this.id)});
-    performLfmRequest('domove', {
+    performSecureLfmRequest('domove', {
       items: items,
       goToFolder: $folder
     }).done(refreshFoldersAndItems);

@@ -79,7 +79,7 @@
         return false;
     }
     function performCrop() {
-      performLfmRequest('cropimage', {
+      performSecureLfmRequest('cropimage', {
         img: $("#img").val(),
         working_dir: $("#working_dir").val(),
         dataX: $("#dataX").val(),
@@ -91,7 +91,7 @@
     }
 
     function performCropNew() {
-      performLfmRequest('cropnewimage', {
+      performSecureLfmRequest('cropnewimage', {
         img: $("#img").val(),
         working_dir: $("#working_dir").val(),
         dataX: $("#dataX").val(),

@@ -318,7 +318,7 @@ class Lfm
                 'as' => 'move',
             ]);
 
-            Route::get('/domove', [
+            Route::post('/domove', [
                 'uses' => 'ItemsController@doMove',
                 'as' => 'doMove'
             ]);
@@ -340,17 +340,17 @@ class Lfm
                 'uses' => 'CropController@getCrop',
                 'as' => 'getCrop',
             ]);
-            Route::get('/cropimage', [
+            Route::post('/cropimage', [
                 'uses' => 'CropController@getCropImage',
                 'as' => 'getCropImage',
             ]);
-            Route::get('/cropnewimage', [
+            Route::post('/cropnewimage', [
                 'uses' => 'CropController@getNewCropImage',
                 'as' => 'getNewCropImage',
             ]);
 
             // rename
-            Route::get('/rename', [
+            Route::post('/rename', [
                 'uses' => 'RenameController@getRename',
                 'as' => 'getRename',
             ]);
@@ -360,11 +360,11 @@ class Lfm
                 'uses' => 'ResizeController@getResize',
                 'as' => 'getResize',
             ]);
-            Route::get('/doresize', [
+            Route::post('/doresize', [
                 'uses' => 'ResizeController@performResize',
                 'as' => 'performResize',
             ]);
-            Route::get('/doresizenew', [
+            Route::post('/doresizenew', [
                 'uses' => 'ResizeController@performResizeNew',
                 'as' => 'performResizeNew',
             ]);
@@ -375,7 +375,7 @@ class Lfm
             ]);
 
             // delete
-            Route::get('/delete', [
+            Route::post('/delete', [
                 'uses' => 'DeleteController@getDelete',
                 'as' => 'getDelete',
             ]);

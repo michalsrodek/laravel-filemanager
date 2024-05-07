@@ -115,7 +115,7 @@
   }
 
   function doResize() {
-    performLfmRequest('doresize', {
+    performSecureLfmRequest('doresize', {
       img: $("#img").val(),
       dataHeight: $("#height").val(),
       dataWidth: $("#width").val()
@@ -123,7 +123,7 @@
   }
 
   function doResizeNew() {
-    performLfmRequest('doresizenew', {
+    performSecureLfmRequest('doresizenew', {
       img: $("#img").val(),
       dataHeight: $("#height").val(),
       dataWidth: $("#width").val()

@@ -283,6 +283,35 @@ function performLfmRequest(url, parameter, type) {
   });
 }
 
+function performSecureLfmRequest(url, parameter, type) {
+  var data = defaultParameters();
+
+  if (parameter != null) {
+    $.each(parameter, function (key, value) {
+      data[key] = value;
+    });
+  }
+
+  // Add CSRF token
+  data['_token'] = $('meta[name="csrf-token"]').attr('content');
+
+  return $.ajax({
+    type: 'POST',
+    beforeSend: function(request) {
+      var token = getUrlParam('token');
+      if (token !== null) {
+        request.setRequestHeader("Authorization", 'Bearer ' + token);
+      }
+    },
+    dataType: type || 'text',
+    url: lfm_route + '/' + url,
+    data: data,
+    cache: false
+  }).fail(function (jqXHR, textStatus, errorThrown) {
+    displayErrorResponse(jqXHR);
+  });
+}
+
 function displayErrorResponse(jqXHR) {
   var message = JSON.parse(jqXHR.responseText)
   if (Array.isArray(message)) {
@@ -536,7 +565,7 @@ function createFolder(folder_name) {
 
 function rename(item) {
   dialog(lang['message-rename'], item.name, function (new_name) {
-    performLfmRequest('rename', {
+    performSecureLfmRequest('rename', {
       file: item.name,
       new_name: new_name
     }).done(refreshFoldersAndItems);
@@ -545,7 +574,7 @@ function rename(item) {
 
 function trash(items) {
   confirm(lang['message-delete'], function () {
-    performLfmRequest('delete', {
+    performSecureLfmRequest('delete', {
       items: items.map(function (item) { return item.name; })
     }).done(refreshFoldersAndItems)
   });

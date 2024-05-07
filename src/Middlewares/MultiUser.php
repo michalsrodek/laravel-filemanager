@@ -33,6 +33,10 @@ class MultiUser
 
     private function validDir($previous_dir)
     {
+        if (Str::contains($previous_dir, '../') || Str::contains($previous_dir, '..\\')) {
+            return false;
+        }
+
         if (Str::startsWith($previous_dir, $this->helper->getRootFolder('share'))) {
             return true;
         }

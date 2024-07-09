@@ -98,7 +98,7 @@ return [
 
     'rename_file'              => false,
 
-    'rename_file_class'        => null,
+    'file_namer'               => null,
 
     'rename_duplicates'        => false,
 
